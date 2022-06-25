@@ -8,6 +8,9 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
+import Select, { SelectChangeEvent } from '@mui/material/Select';
+import MenuItem from '@mui/material/MenuItem';
+import InputLabel from '@mui/material/InputLabel';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
@@ -66,14 +69,13 @@ function Register() {
     const handleSubmit = (event) => {
         event.preventDefault();
         const data = new FormData(event.currentTarget);
-        console.log({
-          email: data.get('email'),
-          password: data.get('password'),
-        });
+        console.log(
+          data
+        );
     };
     return (
         <ThemeProvider theme={theme}>
-        <Container component="main" maxWidth="xs">
+        <Container component="main" maxWidth="sm">
           <CssBaseline />
           <Box
             sx={{
@@ -91,53 +93,94 @@ function Register() {
             </Typography>
             <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
               <Grid container spacing={2}>
-                <Grid item xs={12} sm={6}>
+              <Grid item xs={12} sm={6}>
                   <TextField
                     autoComplete="given-name"
-                    name="firstName"
+                    name="fullName"
                     required
                     fullWidth
-                    id="firstName"
-                    label="First Name"
-                    autoFocus
+                    id="fullName"
+                    label="Họ Tên"
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    required
                     fullWidth
-                    id="lastName"
-                    label="Last Name"
-                    name="lastName"
+                    id="email"
+                    label="Email"
+                    name="email"
                     autoComplete="family-name"
                   />
                 </Grid>
-                <Grid item xs={12}>
+
+                <Grid item xs={12} sm={6}>
                   <TextField
+                    autoComplete="given-name"
+                    name="phoneNumber"
                     required
                     fullWidth
-                    id="email"
-                    label="Email Address"
-                    name="email"
-                    autoComplete="email"
+                    id="phoneNumber"
+                    label="Số điện thoại"
+                    
                   />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    fullWidth
+                    id="storeName"
+                    label="Tên cửa hàng"
+                    name="storeName"
+                    autoComplete="family-name"
+                  />
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    autoComplete="given-name"
+                    name="cityName"
+                    fullWidth
+                    id="cityName"
+                    label="Tên thành phố"
+                  />
+                </Grid>
+                <Grid item xs={12} sm={6}>
+                  <TextField
+                    select
+                    id="vehicleTypeSelect"
+                    label="Loại phương tiện"
+                    fullWidth
+                  >
+                      <MenuItem value={0}>Xe đạp</MenuItem>
+                      <MenuItem value={1}>Xe máy</MenuItem>
+                      <MenuItem value={2}>Ô tô</MenuItem>
+                  </TextField>
+                  
                 </Grid>
                 <Grid item xs={12}>
                   <TextField
-                    required
                     fullWidth
-                    name="password"
-                    label="Password"
-                    type="password"
-                    id="password"
+                    name="address"
+                    label="Địa chỉ chi tiết"
+                    id="address"
                     autoComplete="new-password"
                   />
                 </Grid>
                 <Grid item xs={12}>
                   <FormControlLabel
-                    control={<Checkbox value="allowExtraEmails" color="primary" />}
-                    label="I want to receive inspiration, marketing promotions and updates via email."
+                    control={<Checkbox id="agreeTerm" name="agreeTerm" color="primary" />}
+                    label={<Typography variant="caption" color="textSecondary">
+                      <span>Tôi đồng ý với </span>
+                      <Link to={'/terms'} onClick={(e) => {
+                        e.preventDefault();
+                      }}>quy định sử dụng</Link>
+                      <span> và </span>
+                      <Link to={'/privacy'} onClick={(e) => {
+                        e.preventDefault();
+                      }}>chính sách bảo mật</Link>
+                      <span> của </span>
+                  </Typography>}
                   />
+                 
                 </Grid>
               </Grid>
               <Button

@@ -107,17 +107,17 @@ function Register() {
                   <TextField
                     fullWidth
                     id="email"
+                    type="email"
                     label="Email"
                     name="email"
-                    autoComplete="family-name"
                   />
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    autoComplete="given-name"
+                    autoComplete="tel-national"
                     name="phoneNumber"
-                    type="number"
+                    type="tel"
                     required
                     fullWidth
                     id="phoneNumber"
@@ -131,13 +131,13 @@ function Register() {
                     id="storeName"
                     label="Tên cửa hàng"
                     name="storeName"
-                    autoComplete="family-name"
+                    autoComplete="organization"
                   />
                 </Grid>
 
                 <Grid item xs={12} sm={6}>
                   <TextField
-                    autoComplete="given-name"
+                    autoComplete="address-level2"
                     name="cityName"
                     fullWidth
                     id="cityName"
@@ -164,7 +164,7 @@ function Register() {
                     name="address"
                     label="Địa chỉ chi tiết"
                     id="address"
-                    autoComplete="new-password"
+                    autoComplete="street-address"
                   />
                 </Grid>
                 <Grid item xs={12}>

@@ -117,6 +117,7 @@ function Register() {
                   <TextField
                     autoComplete="given-name"
                     name="phoneNumber"
+                    type="number"
                     required
                     fullWidth
                     id="phoneNumber"
@@ -148,6 +149,7 @@ function Register() {
                     select
                     id="vehicleTypeSelect"
                     label="Loại phương tiện"
+                    defaultValue=""
                     fullWidth
                   >
                       <MenuItem value={0}>Xe đạp</MenuItem>
